@@ -30,7 +30,7 @@ namespace TerrainGen
 
         protected override void OnInitialized(EventArgs e)
         {
-            Grid = new TerrainGrid(256, 256); 
+            Grid = new TerrainGrid(512, 512); 
             var noise = new WorleyNoiseGenerator();
             noise.Apply(Grid);
             grid.Children.Add(new GridDrawPanel(Grid));

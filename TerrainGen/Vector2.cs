@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TerrainGen
 {
-    internal class Vector2
+    public class Vector2
     {
         internal double x, y;
 
@@ -21,7 +21,7 @@ namespace TerrainGen
         public double DistanceTo(Vector2 p)
             => SquareDistaceTo(p).Sqrt();
     }
-    internal static class MathEx
+    public static class MathEx
     {
         public static double Sqrt(this double x)
             => Math.Sqrt(x);

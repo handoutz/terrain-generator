@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrainGen", "TerrainGen\TerrainGen.csproj", "{0FC195DA-B32E-41E3-8094-520C077A6E4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrainGen.Winforms", "TerrainGen.Winforms\TerrainGen.Winforms.csproj", "{AC502D66-D8D2-45CE-8933-9DABCD770322}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0FC195DA-B32E-41E3-8094-520C077A6E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FC195DA-B32E-41E3-8094-520C077A6E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FC195DA-B32E-41E3-8094-520C077A6E4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC502D66-D8D2-45CE-8933-9DABCD770322}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC502D66-D8D2-45CE-8933-9DABCD770322}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC502D66-D8D2-45CE-8933-9DABCD770322}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC502D66-D8D2-45CE-8933-9DABCD770322}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
