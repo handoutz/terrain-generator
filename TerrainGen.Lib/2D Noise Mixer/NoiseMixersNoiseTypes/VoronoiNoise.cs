@@ -92,6 +92,8 @@ namespace NoiseMixer
         {
             return voronoiNoise.GetValue(XPos, YPos);
         }
+
+        public string Name { get; }
     }
 }
 

@@ -78,5 +78,7 @@
            return  GetValue((float)XPos, (float)YPos);
 
         }
+
+        public string Name { get; }
     }
 }

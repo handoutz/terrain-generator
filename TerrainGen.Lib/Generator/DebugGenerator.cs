@@ -14,8 +14,11 @@ namespace TerrainGen.Generator
         public int n;
         public void Apply(TerrainGrid grid)
         {
+            var scale = 2.0d;
+            var rand = new Random();
             var nm = new Noise.NoiseMixer(grid.Width, grid.Height);
-            nm.NewCombineLayer(new WorleyNoise(grid.Width, grid.Height, 14, 100), 2);
+            nm.NewCombineLayer(new WorleyNoise(grid.Width, grid.Height, 14, 100), scale);
+            nm.NewCombineLayer(new PerlinNoise(rand.Next(), true), scale);
             
             var result = nm.Apply(false);
             //iterate grid

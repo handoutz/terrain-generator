@@ -1,40 +1,42 @@
-﻿namespace NoiseMixer
-{
+﻿
 
+
+namespace NoiseMixer
+{
     /// <summary>
-    /// This class was written by Jay Van Schaick as a wrapper class between the Billow Noise method from the NoiseMixer and the NoiseMixer.
+    /// This class was written by Jay Van Schaick as a wrapper class between the Fractal Brownian Motion method from the NoiseMixer and the NoiseMixer.
     /// </summary>
-    public class BillowNoise : INoise
+    public class FractalBrownianMotion : INoise
     {
         //the noise to be used settings
         IGradientNiose NoiseType;
 
-        // the octaves settings
+        // the fBm settings
         uint octaves;
         double persistence;
         double lacunarity;
-        double initFrequency;
+        double initFrequency;  
         bool normalizeReturn;
 
 
         /// <summary>
-        /// A "Default Constructor" for Billow Noise. Only meant for quick Billow Noise, not suitable for most use cases.
+        /// A "Default Constructor" for fBm. Only meant for quick fBm noise, not suitable for most use cases.
         /// </summary>
         /// <param name="Octaves">The number of levels of detail you want you noise to have. </param>
-        public BillowNoise(uint Octaves) : this(Octaves, false)
+        public FractalBrownianMotion(uint Octaves) : this(Octaves, false)
         {
 
         }
 
         /// <summary>
-        /// A constructor for Billow Noise. Sets up the Billow Noise, to use Perlin noise for its noise source.
+        /// A constructor for fBm. Sets up the fBm noise to use Perlin noise for its noise source.
         /// </summary>
         /// <param name="Octaves">The number of levels of detail you want you noise to have. </param>
         /// <param name="NormalizeReturn">The return data values be between (0,1) if true, or between (-1,1) if false.</param> 
         /// <param name="Persistence">The number that determines how much each octave contributes to the overall shape.</param>
         /// <param name="Lacunarity">The number that determines how much detail is added or removed at each octave.</param>
         /// <param name="InitFrequency">The starting value the frequency should to initialized at.</param>
-        public BillowNoise(uint Octaves, bool NormalizeReturn, float Persistence = 0.5f, float Lacunarity = 2f, float InitFrequency = 1f)
+        public FractalBrownianMotion(uint Octaves, bool NormalizeReturn, float Persistence = 0.5f, float Lacunarity = 2f, float InitFrequency = 1f)
         : this(new PerlinNoise(), Octaves, NormalizeReturn, Persistence, Lacunarity, InitFrequency)
         {
 
@@ -42,7 +44,7 @@
         }
 
         /// <summary>
-        /// A constructor for Billow Noise, give the max control over set up;
+        /// A constructor for fBm, give the max control over set up;
         /// </summary>
         /// <param name="NoiseType">The type of noise to use from the NoiseMixer Library, Perlin, Simplex, etc. </param>
         /// <param name="Octaves">The number of levels of detail you want you noise to have. </param>
@@ -50,7 +52,7 @@
         /// <param name="Persistence">The number that determines how much each octave contributes to the overall shape.</param>
         /// <param name="Lacunarity">The number that determines how much detail is added or removed at each octave.</param>
         /// <param name="InitFrequency">The starting value the frequency should to initialized at.</param>
-        public BillowNoise(IGradientNiose gradientNiose, uint Octaves, bool NormalizeReturn, float Persistence = 0.5f, float Lacunarity = 2f, float InitFrequency = 1f)
+        public FractalBrownianMotion( IGradientNiose gradientNiose, uint Octaves, bool NormalizeReturn, float Persistence = 0.5f, float Lacunarity = 2f, float InitFrequency = 1f)
         {
 
             NoiseType = gradientNiose;
@@ -85,7 +87,7 @@
         public double InitFrequency { get => initFrequency; set => initFrequency = value; }
 
         /// <summary>
-        /// Get or set the noise type being used in the Billow generation. 
+        /// Get or set the noise type being used in the fBm generation. 
         /// </summary>
         public IGradientNiose GetNoise { get => NoiseType; set => NoiseType = value; }
 
@@ -104,7 +106,7 @@
         public float GetValue(float XPos, float YPos)
         {
 
-            return (float)DerivedNoiseTypes.BillowNoise(NoiseType, XPos, YPos, Octaves, NormalizeReturn, Persistence, Lacunarity, InitFrequency);
+            return (float)DerivedNoiseTypes.FractalBrownianMotion(NoiseType, XPos, YPos, Octaves, NormalizeReturn, Persistence, Lacunarity, InitFrequency);
 
         }
 
@@ -116,10 +118,11 @@
         /// <returns>A double</returns>
         public double GetValue(double XPos, double YPos)
         {
-            return DerivedNoiseTypes.BillowNoise(NoiseType, XPos, YPos, Octaves, NormalizeReturn, Persistence, Lacunarity, InitFrequency);
+            return DerivedNoiseTypes.FractalBrownianMotion(NoiseType, XPos, YPos, Octaves, NormalizeReturn, Persistence, Lacunarity, InitFrequency);
         }
 
+        public string Name { get; }
     }
-}
 
+}
 

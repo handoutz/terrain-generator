@@ -98,6 +98,8 @@ namespace NoiseMixer
         {
             return worleyNoise.GetValueFromClosestPoint(XPos, YPos, MaxDistance);
         }
+
+        public string Name { get; }
     }
 }
 

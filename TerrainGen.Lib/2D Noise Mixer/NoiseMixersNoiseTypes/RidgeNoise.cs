@@ -1,42 +1,41 @@
 ﻿
 
-
 namespace NoiseMixer
 {
     /// <summary>
-    /// This class was written by Jay Van Schaick as a wrapper class between the Fractal Brownian Motion method from the NoiseMixer and the NoiseMixer.
+    /// This class was written by Jay Van Schaick as a wrapper class between the Ridge Noise method from the NoiseMixer and the NoiseMixer.
     /// </summary>
-    public class FractalBrownianMotion : INoise
+    public class RidgeNoise : INoise
     {
         //the noise to be used settings
         IGradientNiose NoiseType;
 
-        // the fBm settings
+        // the octaves settings
         uint octaves;
         double persistence;
         double lacunarity;
-        double initFrequency;  
+        double initFrequency;
         bool normalizeReturn;
 
 
         /// <summary>
-        /// A "Default Constructor" for fBm. Only meant for quick fBm noise, not suitable for most use cases.
+        /// A "Default Constructor" for Ridge Noise. Only meant for quick Ridge Noise, not suitable for most use cases.
         /// </summary>
         /// <param name="Octaves">The number of levels of detail you want you noise to have. </param>
-        public FractalBrownianMotion(uint Octaves) : this(Octaves, false)
+        public RidgeNoise(uint Octaves) : this(Octaves, false)
         {
 
         }
 
         /// <summary>
-        /// A constructor for fBm. Sets up the fBm noise to use Perlin noise for its noise source.
+        /// A constructor for Ridge Noise. Sets up the Ridge Noise to use Perlin noise for its noise source.
         /// </summary>
         /// <param name="Octaves">The number of levels of detail you want you noise to have. </param>
         /// <param name="NormalizeReturn">The return data values be between (0,1) if true, or between (-1,1) if false.</param> 
         /// <param name="Persistence">The number that determines how much each octave contributes to the overall shape.</param>
         /// <param name="Lacunarity">The number that determines how much detail is added or removed at each octave.</param>
         /// <param name="InitFrequency">The starting value the frequency should to initialized at.</param>
-        public FractalBrownianMotion(uint Octaves, bool NormalizeReturn, float Persistence = 0.5f, float Lacunarity = 2f, float InitFrequency = 1f)
+        public RidgeNoise(uint Octaves, bool NormalizeReturn, float Persistence = 0.5f, float Lacunarity = 2f, float InitFrequency = 1f)
         : this(new PerlinNoise(), Octaves, NormalizeReturn, Persistence, Lacunarity, InitFrequency)
         {
 
@@ -44,7 +43,7 @@ namespace NoiseMixer
         }
 
         /// <summary>
-        /// A constructor for fBm, give the max control over set up;
+        /// A constructor for Ridge Noise, give the max control over set up;
         /// </summary>
         /// <param name="NoiseType">The type of noise to use from the NoiseMixer Library, Perlin, Simplex, etc. </param>
         /// <param name="Octaves">The number of levels of detail you want you noise to have. </param>
@@ -52,7 +51,7 @@ namespace NoiseMixer
         /// <param name="Persistence">The number that determines how much each octave contributes to the overall shape.</param>
         /// <param name="Lacunarity">The number that determines how much detail is added or removed at each octave.</param>
         /// <param name="InitFrequency">The starting value the frequency should to initialized at.</param>
-        public FractalBrownianMotion( IGradientNiose gradientNiose, uint Octaves, bool NormalizeReturn, float Persistence = 0.5f, float Lacunarity = 2f, float InitFrequency = 1f)
+        public RidgeNoise(IGradientNiose gradientNiose, uint Octaves, bool NormalizeReturn, float Persistence = 0.5f, float Lacunarity = 2f, float InitFrequency = 1f)
         {
 
             NoiseType = gradientNiose;
@@ -87,7 +86,7 @@ namespace NoiseMixer
         public double InitFrequency { get => initFrequency; set => initFrequency = value; }
 
         /// <summary>
-        /// Get or set the noise type being used in the fBm generation. 
+        /// Get or set the noise type being used in the Ridge generation. 
         /// </summary>
         public IGradientNiose GetNoise { get => NoiseType; set => NoiseType = value; }
 
@@ -106,7 +105,7 @@ namespace NoiseMixer
         public float GetValue(float XPos, float YPos)
         {
 
-            return (float)DerivedNoiseTypes.FractalBrownianMotion(NoiseType, XPos, YPos, Octaves, NormalizeReturn, Persistence, Lacunarity, InitFrequency);
+            return (float)DerivedNoiseTypes.RidgeNoise(NoiseType, XPos, YPos, Octaves, NormalizeReturn, Persistence, Lacunarity, InitFrequency);
 
         }
 
@@ -118,10 +117,12 @@ namespace NoiseMixer
         /// <returns>A double</returns>
         public double GetValue(double XPos, double YPos)
         {
-            return DerivedNoiseTypes.FractalBrownianMotion(NoiseType, XPos, YPos, Octaves, NormalizeReturn, Persistence, Lacunarity, InitFrequency);
+            return DerivedNoiseTypes.RidgeNoise(NoiseType, XPos, YPos, Octaves, NormalizeReturn, Persistence, Lacunarity, InitFrequency);
         }
 
+        public string Name { get; }
     }
-
 }
 
+
+    

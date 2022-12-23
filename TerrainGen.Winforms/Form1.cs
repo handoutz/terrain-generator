@@ -1,4 +1,5 @@
 using TerrainGen.Generator;
+using TerrainGen.Winforms.NoiseBuilder;
 
 namespace TerrainGen.Winforms
 {
@@ -17,6 +18,10 @@ namespace TerrainGen.Winforms
             Height = (int)Grid.Height;
             var noise = new WorleyNoiseGenerator();
             noise.Apply(Grid);
+            groupBox1.Controls.Add(new LayerManager()
+            {
+                Dock=DockStyle.Fill
+            });
             Invalidate();
         }
 

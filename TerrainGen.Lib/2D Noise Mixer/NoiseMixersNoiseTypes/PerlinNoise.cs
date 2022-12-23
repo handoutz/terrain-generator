@@ -75,5 +75,7 @@ namespace NoiseMixer
         {
              return (float)perlin.Perlin(XPos, YPos, seed, normalizeReturn);
         }
+
+        public string Name { get; }
     }
 }

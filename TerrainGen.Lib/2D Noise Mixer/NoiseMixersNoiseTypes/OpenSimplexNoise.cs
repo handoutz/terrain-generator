@@ -93,6 +93,8 @@
                 return (openSimplex.Evaluate(XPos, YPos) + 1) / 2;
             }
         }
+
+        public string Name { get; }
     }
 }
 

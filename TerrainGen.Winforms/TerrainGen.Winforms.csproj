@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TerrainGen\TerrainGen.csproj" />
+    <ProjectReference Include="..\TerrainGen.Lib\TerrainGen.Lib.csproj" />
   </ItemGroup>
 
 </Project>

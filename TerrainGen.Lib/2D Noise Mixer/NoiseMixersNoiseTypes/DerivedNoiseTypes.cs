@@ -281,7 +281,7 @@ namespace NoiseMixer
         /// <returns>A float between 0, and 1</returns>
         float GetValue(float XPos, float YPos);
         double GetValue(double XPos, double YPos);
-
+        string Name { get; }
     }
 
     public interface IVoronoiTypeNiose : INoise
